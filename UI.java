@@ -19,11 +19,11 @@ public class UI
 		rMode = "heat";
 		return rMode;
 	}
-	/* TODO add get and set methods for the runState */
+	/* DONE add get and set methods for the runState */
 
-	/* TODO add get method to return the holdTemp, hardcoded to 68 degrees */
+	/* DONE  add get method to return the holdTemp, hardcoded to 68 degrees */
 
-	/* TODO add get method to return the rMode, initially hardcoded to "heat" for testing purposes */
+	/* DONE add get method to return the rMode, initially hardcoded to "heat" for testing purposes */
 
 	public void printStatus(int currTemp, boolean commandMode)
 	{
@@ -32,15 +32,16 @@ public class UI
 
 	private String convertBool(boolean isOn)
 	{
+
 		String state = "Off";
 		if (isOn){
 			state = "On";
 		}
-		/* TODO add a string variable to hold the on/off state as a string, initialized to "Off"  */
+		/* DONE add a string variable to hold the on/off state as a string, initialized to "Off"  */
 
-		/* TODO add an if statement, testing to see if isOn is true, and if it is, setting the string variable to "On" */
+		/* DONE add an if statement, testing to see if isOn is true, and if it is, setting the string variable to "On" */
 
-		/* TODO add the return statement for the string */
+		/* DONE add the return statement for the string */
 		return state;
 	}
 }
