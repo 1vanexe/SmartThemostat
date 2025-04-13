@@ -6,6 +6,8 @@ public class TempSensor
 	
 	
 	int[] tempArray = new int[] {45,64,65,66,67,68,69,70,71,72,73,85};
+	private int randomNum;
+	private int randomTemp;
 	/* TODO add an integer variable to hold a random number */
 	
 	/* TODO add an integer variable to hold a value randomly selected from the array of temperatures */
