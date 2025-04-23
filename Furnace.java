@@ -1,39 +1,39 @@
 import java.util.TimerTask;
 
 public class Furnace extends TimerTask
+{
+	boolean commandMode;
+	UI myUI;
+	TempSensor myTS;
+
+	public Furnace(TempSensor inTS, UI inUI)
 	{
-		boolean commandMode;
-		UI myUI;
-		TempSensor myTS;
-		
-		public Furnace(TempSensor inTS, UI inUI) 
-		{
-         	this.myUI = inUI;
-         	this.myTS = inTS;
-     	}
-		
-		@Override
-		public void run()
-		{	
-			int holdTemp = myUI.getHoldTemp();
-			int currTemp = myTS.takeTemp();
-			boolean runState = myUI.getRunState();
-			
-			/* TODO - translate the pseudocode logic below into working java code */
-			
-			if runState=on and the current temperature is more than 2 degrees over the hold temperature
-			{
-				set the command mode to off
-			}
-			else if runState=off and the current temperature is more than 2 degrees under the hold temperature
-			{
-				set the command mode to on
-			}
-		
-			
-			/* TODO - call the UI's print status method, passing to it the current temperature and command mode */
-			
-			/* TODO - call the UI's set run state method to pass the command mode to the UI */				
-			
-		}
+		this.myUI = inUI;
+		this.myTS = inTS;
 	}
+
+	@Override
+	public void run()
+	{
+		// Reads hold temp and current room temp
+		int holdTemp = myUI.getHoldTemp();
+		int currTemp = myTS.takeTemp();
+		boolean runState = myUI.getRunState();
+
+		/* if system is ON and room is too hot, turn off furnace */
+		if(runState && currTemp > (holdTemp + 2)){
+			commandMode = false;
+		}
+		// if System is off and room is too cold, turn on furnace
+		if(!runState && currTemp < (holdTemp - 2)){
+			commandMode = true;
+		}
+
+		// Prints system status and updates run state
+		myUI.printStatus(currTemp, commandMode);
+		myUI.setRunState(commandMode);
+
+
+
+	}
+}
